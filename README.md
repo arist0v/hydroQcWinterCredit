@@ -14,3 +14,4 @@ The configuration needed so far:
 Goal:
 the use of this thing will be to use this things to set rules to reduce the heating target of thermostat during the event period.
 During those period you can get credit for each kwh not used(or in some case, the price of each kwh during those period are higher)
+
