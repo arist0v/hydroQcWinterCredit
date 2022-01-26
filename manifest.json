@@ -24,28 +24,29 @@
             "required":[
                 "hydroQcUsername",
                 "hydroQcPassword"
-            ]
-        },
-        "properties":{
+            ],
+        
+            "properties":{
 
-            "hydroQcUsername":{
-                "type" : "string",
-                "title": "Hydro Quebec profile username"
-            },
+                "hydroQcUsername":{
+                    "type" : "string",
+                    "title": "Hydro Quebec profile username"
+                },
 
-            "hydroQcPassword":{
-                "type" : "string",
-                "title": "Hydro Quebec profile password"
-            },
+                "hydroQcPassword":{
+                    "type" : "string",
+                    "title": "Hydro Quebec profile password"
+                },
 
-            "preHeatDelay":{
-                "type": "number",
-                "title": "Delay in minute for to heat before event"
-            },
+                "preHeatDelay":{
+                    "type": "number",
+                    "title": "Delay in minute for to heat before event"
+                },
 
-            "postHeatDelay":{
-                "type":"number",
-                "title":"Delay in minute for to heat after event"
+                "postHeatDelay":{
+                    "type":"number",
+                    "title":"Delay in minute for to heat after event"
+                }
             }
         }
     }
