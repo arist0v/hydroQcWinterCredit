@@ -9,8 +9,10 @@
     "license": "GPL-3.0",
     "author": "Arist0v",
     "gateway_specific_settings": {
-        "exec": "python3 {path}/main.py",
-        "primary_type": "adapter"
+        "webthings":{
+            "exec": "python3 {path}/main.py",
+            "primary_type": "adapter"
+        }
     },
     "options":{
         "default":{
