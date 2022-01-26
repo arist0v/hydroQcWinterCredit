@@ -35,7 +35,6 @@
 
                 "hydroQcPassword":{
                     "type" : "string",
-                    "format": "password",
                     "title": "Hydro Quebec profile password"
                 },
 
