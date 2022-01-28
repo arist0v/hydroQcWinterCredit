@@ -1,39 +1,39 @@
 {
     "manifest_version": 1,
-    "id": "hydroQcWinterCredit",
-    "name": "Hydro Quebec Winter Credit",
+    "id": "hydroQcWinterCredit",//name of addons, same as folder
+    "name": "Hydro Quebec Winter Credit",//full name of addon
     "short_name": "HydroQc Event",
     "version" : "0.0",
-    "description": "Thing for the credit event of Hydro Quebec",
+    "description": "Thing for the credit event of Hydro Quebec",//as show in addons page of webthings
     "homepage_url": "https://github.com/arist0v/hydroQcWinterCredit",
     "license": "GPL-3.0",
     "author": "Arist0v",
     "gateway_specific_settings": {
         "webthings":{
-            "exec": "python3 {path}/main.py",
-            "primary_type": "adapter"
+            "exec": "python3 {path}/main.py",//command to execute addon
+            "primary_type": "adapter"//type of addon
         }
-    },
+    },//gateway configuration,
     "options":{
-        "default":{
+        "default":{//default value
             "preHeatDelay":[30],
             "postHeatDelay":[30]
         },
-        "schema":{
+        "schema":{//schema of the options pages
             "type": "object",
-            "required":[
+            "required":[//required filed
                 "hydroQcUsername",
                 "hydroQcPassword"
             ],
         
-            "properties":{
+            "properties":{//options fields as show in config page of the addons
 
                 "hydroQcUsername":{
                     "type" : "string",
                     "title": "Hydro Quebec profile username"
                 },
 
-                "hydroQcPassword":{
+                "hydroQcPassword":{//is there a way to make it a password field nor encrypt it?
                     "type" : "string",
                     "title": "Hydro Quebec profile password"
                 },
