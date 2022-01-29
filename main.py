@@ -26,6 +26,7 @@ def cleanup(signum, frame):
 
 
 if __name__ == '__main__':
+    print("crocrodile")
     signal.signal(signal.SIGINT, cleanup)
     signal.signal(signal.SIGTERM, cleanup)
     _ADAPTER = hqAdapter()
