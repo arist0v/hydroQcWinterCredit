@@ -14,7 +14,7 @@ class hqAdapter(Adapter):
         self.name = self.__class__.__name__
         Adapter.__init__(self,'hydroQcWinterCredit','hydroQcWinterCredit')#argument: self, id for the package, name of the package
         database = Database('hydroQcWinterCredit')
-        print(database)#DEBUG Test Reading database for config
+        print(database.load_config())#DEBUG Test Reading database for config
         print("poulet")#use print to print info in log #DEBUGg
 
         self.pairing=False
