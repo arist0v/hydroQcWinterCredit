@@ -32,4 +32,3 @@ class hqAdapter(Adapter):
         time.sleep(timeout)
 
         self.pairing = False
-
