@@ -10,7 +10,7 @@ class hqAdapter(Adapter):
     def __init__(self):
         """initialize the object"""
         self.name = self.__class__.__name__
-        Adapter.__init__(self)
+        Adapter.__init__(self,'hydroQcWinterCredit','hydroQcWinterCredit')#argument: self, id for the package, name of the package
         database = Database('hydroQcWinterCredit')
         print("poulet")
 
