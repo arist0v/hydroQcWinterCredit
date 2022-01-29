@@ -8,7 +8,7 @@ import time
 
 sys.path.append(path.join(path.dirname(path.abspath(__file__)), 'lib'))#TODO: Figure this out
 
-#from pkg.tplink_adapter import TPLinkAdapter  # TODO adapt this line to fit my need
+from pkg.hq_Adapter import hqAdapter
 
 
 _DEBUG = False
@@ -28,7 +28,7 @@ def cleanup(signum, frame):
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, cleanup)
     signal.signal(signal.SIGTERM, cleanup)
-    #_ADAPTER = TPLinkAdapter(verbose=_DEBUG)#TODO: adapt this line to fit my need
+    _ADAPTER = hqAdapter()
 
     # Wait until the proxy stops running, indicating that the gateway shut us
     # down.
