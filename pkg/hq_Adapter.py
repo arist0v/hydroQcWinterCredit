@@ -42,3 +42,7 @@ class hqAdapter(Adapter):
         """Removing the device from webthings"""
 
         self.handle_device_removed(device)
+
+    def cancel_pairing(self):
+        """Cancel the pairing process"""
+        self.pairing = False
