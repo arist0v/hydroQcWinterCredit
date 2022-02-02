@@ -37,3 +37,8 @@ class hqAdapter(Adapter):
         time.sleep(timeout)
 
         self.pairing = False
+
+    def remove_device(self, device):
+        """Removing the device from webthings"""
+
+        self.handle_device_removed(device)
