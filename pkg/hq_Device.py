@@ -31,6 +31,6 @@ class hqDevice(Device):
             '@type': 'BooleanProperty',
             'title': 'Active Event',
             'type': 'boolean',
-            'Read-Only' : True,
+            'readOnly' : True,
         })
         self.set_property('ActiveEvent', False)
