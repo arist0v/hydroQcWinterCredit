@@ -34,6 +34,7 @@ class hqDevice(Device):
             'readOnly' : True,
         })
         prop = self.find_property('ActiveEvent')
+        print(prop)
         prop.update(False)
         self.notify_property_changed(prop)
         #self.notify_property_changed(self.find_property('ActiveEvent'))
