@@ -1,7 +1,7 @@
 """Device for hqWinterCreditAdapter"""
 
 from wsgiref.simple_server import WSGIRequestHandler
-from gateway_addon import Device
+from gateway_addon import Device, Property
 
 import threading
 import time
@@ -24,3 +24,7 @@ class hqDevice(Device):
         self.title = 'Hydro Quebec Winter Credit Event'#This appear in the text bar when adding the device and is the default name of the device
         self.name = 'Hydro Quebec Winter Credit Event 3'#not sure where it's used
         
+        #SETTINGS PROPRETY FOR DEVICE
+
+        self.properties['ActiveEvent'] = Property(self, 'Active Event','Is an event is active')
+        self.set_property('ActiveEvent', False)
