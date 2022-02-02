@@ -31,6 +31,7 @@ class hqAdapter(Adapter):
 
         self.pairing = True
         device = hq_Device.hqDevice(self, "hqDevice12345")
+        self.handle_device_added(device)
         print("Start Pairing")#DEBUG
 
         time.sleep(timeout)
