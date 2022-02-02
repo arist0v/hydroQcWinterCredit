@@ -20,5 +20,7 @@ class hqDevice(Device):
         Device.__init__(self, adapter, _id)
 
         self._type.append('BinarySensor')
-        self.description = 'Hydro Quebec Winter Credit Event'
+        self.description = 'Hydro Quebec Winter Credit Event 1'
+        self.title = 'Hydro Quebec Winter Credit Event 2'
+        self.name = 'Hydro Quebec Winter Credit Event 3'
         
