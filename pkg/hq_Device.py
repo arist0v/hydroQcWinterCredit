@@ -26,5 +26,10 @@ class hqDevice(Device):
         
         #SETTINGS PROPRETY FOR DEVICE
 
-        self.properties['ActiveEvent'] = Property(self, 'Active Event','Is an event is active')
+        self.properties['ActiveEvent'] = Property(self, 'Active Event','Is an event is active', 
+        {
+            '@type': 'BooleanProperty',
+            'title': 'Active Event',
+            'type': 'boolean',  
+        })
         self.set_property('ActiveEvent', False)
