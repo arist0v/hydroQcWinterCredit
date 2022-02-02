@@ -17,6 +17,8 @@ class hqDevice(Device):
         """
 
         Device.__init__(self, adapter, _id)
+
+        self._type.append('BinarySensor')
         
         
 
