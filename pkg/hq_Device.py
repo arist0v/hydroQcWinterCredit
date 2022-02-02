@@ -1,5 +1,6 @@
 """Device for hqWinterCreditAdapter"""
 
+from wsgiref.simple_server import WSGIRequestHandler
 from gateway_addon import Device
 
 import threading
@@ -19,5 +20,5 @@ class hqDevice(Device):
         Device.__init__(self, adapter, _id)
 
         self._type.append('BinarySensor')
-        self.description('Hydro Quebec Winter Credit Event')
+        self.description = 'Hydro Quebec Winter Credit Event'
         
