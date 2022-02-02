@@ -33,3 +33,4 @@ class hqDevice(Device):
             'type': 'boolean',
             'readOnly' : True,
         })
+        self.notify_property_changed('ActiveEvent')
