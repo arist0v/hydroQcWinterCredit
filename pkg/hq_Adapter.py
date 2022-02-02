@@ -3,6 +3,7 @@
 from socket import timeout
 import time
 from gateway_addon import Adapter, Database
+from pkg import hq_Device
 
 _TIMEOUT = 3
 
@@ -13,10 +14,12 @@ class hqAdapter(Adapter):
         """initialize the object"""
         self.name = self.__class__.__name__
         Adapter.__init__(self,'hydroQcWinterCredit','hydroQcWinterCredit')#argument: self, id for the package, name of the package
+        """
         database = Database('hydroQcWinterCredit')#creating database objet with the id as argument
         database.open()#opening database
         print(database.load_config())#DEBUG Test Reading database for config #Loading config
         database.close()
+        """ #TEST FOR DATA BASE READ
         self.pairing=False
         self.start_pairing(_TIMEOUT)
 
@@ -27,6 +30,7 @@ class hqAdapter(Adapter):
             return
 
         self.pairing = True
+        device = hq_Device.hqDevice(self, "hqDevice12345")
         print("Start Pairing")#DEBUG
 
         time.sleep(timeout)

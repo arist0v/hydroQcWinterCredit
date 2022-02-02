@@ -17,3 +17,5 @@ class hqProperty(Property):
         Property.__init__(device, name, description)
         self.set_cached_value(value)
 
+#class hqDeviceProperty(hqProperty):
+#    """Property for hq things"""
