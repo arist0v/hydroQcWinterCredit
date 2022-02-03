@@ -56,7 +56,7 @@ class hq_datetime_ro_property(hqProperty):
 
         name -- name of the property
         """
-        self.description={'title': name, 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
+        self.description={'title': name, 'type': 'string', 'readOnly' : True,}#description of the property
         super().__init__(device)    
     
     def set_RO_Value(self, device, propName, value: datetime):
