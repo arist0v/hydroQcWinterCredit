@@ -55,7 +55,7 @@ class hqDevice(Device):
         #pre-heat duration property
         preHeatDuration = hq_number_rw_property(self, 'Pre-Heat Duration')
         self.properties['PreHeatDuration'] = preHeatDuration
-        preHeatDuration.set_RO_Value('PreHeatDuration', 30)
+        preHeatDuration.set_RO_Value(self, 'PreHeatDuration', 30)
         #number in minute read and write from DB
 
         #post heat duration property
