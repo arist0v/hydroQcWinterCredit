@@ -36,3 +36,8 @@ class hqDevice(Device):
         nextEvent = hq_datetime_ro_property(self, 'Next Event')
         self.properties['NextEvent'] = nextEvent
         nextEvent.set_RO_Value(self, 'NextEvent', datetime.now())
+
+        #last sync property
+        lastSync = hq_datetime_ro_property(self, 'Last Sync')
+        self.properties['LastSync'] = lastSync
+        lastSync.set_RO_Value(self, 'LastSync', datetime.now())
