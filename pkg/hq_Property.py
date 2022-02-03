@@ -37,7 +37,7 @@ class hqProperty(Property):
         value -- value of the property
         """
 
-        prop = device.find_property(propName)
+        prop = device.find_property(self.name)
         prop.set_cached_value_and_notify(value)
 
 class hqActiveEventProperty(hqProperty):
