@@ -1,8 +1,7 @@
 """Device for hqWinterCreditAdapter"""
 
 import datetime
-from wsgiref.simple_server import WSGIRequestHandler
-from gateway_addon import Device, Property
+from gateway_addon import Device
 
 from pkg.hq_Property import hqActiveEventProperty, hqNextEventProperty
 
