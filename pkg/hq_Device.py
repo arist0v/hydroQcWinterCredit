@@ -3,6 +3,8 @@
 from wsgiref.simple_server import WSGIRequestHandler
 from gateway_addon import Device, Property
 
+from pkg.hq_Property import hqActiveEventProperty
+
 import threading
 import time
 
@@ -26,6 +28,8 @@ class hqDevice(Device):
         
         #SETTINGS PROPRETY FOR DEVICE
 
+        activeEvent = hqActiveEventProperty(self, False)
+        """
         self.properties['ActiveEvent'] = Property(self, 'Active Event', 
         {
             '@type': 'BooleanProperty',
@@ -35,6 +39,7 @@ class hqDevice(Device):
         })
         prop = self.find_property('ActiveEvent')
         prop.set_cached_value_and_notify(False)
+        """
         #print(prop)
         #prop.update(False)
         #self.notify_property_changed(prop)
