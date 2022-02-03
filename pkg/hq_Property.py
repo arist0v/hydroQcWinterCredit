@@ -1,6 +1,5 @@
 """Property for device Hydro Quebec event for Webthings"""
 
-from time import strftime
 from gateway_addon import Property
 from datetime import datetime
 
@@ -53,6 +52,6 @@ class hqNextEventProperty(hqProperty):
         modifying the set_RO_Value for datetime object
         """
 
-        value = value.strftime("%Y/%m/%d\n %H:%M:%S")
+        value = value.strftime("%Y/%m/%d\n %H:%M:%S")#TODO:Verify if isoformat could replace strftime
         super().set_RO_Value(device, propName, value)
 
