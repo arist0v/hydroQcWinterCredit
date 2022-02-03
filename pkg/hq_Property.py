@@ -50,9 +50,9 @@ class hqActiveEventProperty(hqProperty):
        Initialize the Property
        
        device -- device who own the property
-       value -- starting value of the property
+       value -- value of the property
        """
-       
+       print(value)
        hqProperty.__init__(self, device)
 
        self.set_RO_Value(device, value)
