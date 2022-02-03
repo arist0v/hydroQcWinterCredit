@@ -28,7 +28,7 @@ class hqProperty(Property):
 
         Property.__init__(self, device, name, description)
 
-    def set_RO_Value(self, device, propName value):
+    def set_RO_Value(self, device, propName, value):
         """
         Set a read-only value
         
