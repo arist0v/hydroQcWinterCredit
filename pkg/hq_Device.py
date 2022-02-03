@@ -32,6 +32,16 @@ class hqDevice(Device):
         self.properties['ActiveEvent'] = activeEvent
         activeEvent.set_RO_Value(self, 'ActiveEvent', False)
 
+        #pre-heat property
+        preHeatEvent = hq_bool_ro_property(self, 'Pre-Heat Event')
+        self.properties['PreHeatEvent'] = preHeatEvent
+        preHeatEvent.set_RO_Value(self, 'PreHeatEvent', False)
+
+        #post-heat property
+        postHeatEvent = hq_bool_ro_property(self, 'Post-Heat Event')
+        self.properties['PostHeatEvent'] = postHeatEvent
+        postHeatEvent.set_RO_Value(self, 'PostHeatEvent', False)
+
         #next event property
         nextEvent = hq_datetime_ro_property(self, 'Next Event')
         self.properties['NextEvent'] = nextEvent
@@ -41,3 +51,7 @@ class hqDevice(Device):
         lastSync = hq_datetime_ro_property(self, 'Last Sync')
         self.properties['LastSync'] = lastSync
         lastSync.set_RO_Value(self, 'LastSync', datetime.now())
+
+        #pre-heat duration property
+
+        #post heat duration property
