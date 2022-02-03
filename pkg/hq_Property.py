@@ -52,7 +52,7 @@ class hqProperty(Property):
         """
 
 
-        stringValue = value.strftime("%Y/%m/%d, %H:%M:%S")
+        stringValue = value.strftime("%Y/%m/%d\n %H:%M:%S")
         prop = device.find_property(propName)
         prop.set_cached_value_and_notify(stringValue)
 
