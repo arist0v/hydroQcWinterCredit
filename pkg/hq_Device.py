@@ -28,7 +28,7 @@ class hqDevice(Device):
         
         #SETTINGS PROPRETY FOR DEVICE
 
-        activeEvent = hqActiveEventProperty(self, False)
+        activeEvent = hqActiveEventProperty(self)
         self.properties['ActiveEvent'] = activeEvent
 
         activeEvent.set_RO_Value(self, False)
