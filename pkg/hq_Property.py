@@ -28,7 +28,7 @@ class hqProperty(Property):
 
         Property.__init__(self, device, name, description)
 
-    def set_RO_Value(self, device, value):
+    def set_RO_Value(self, device, propName value):
         """
         Set a read-only value
         
@@ -37,7 +37,7 @@ class hqProperty(Property):
         value -- value of the property
         """
 
-        prop = device.find_property(self.name)
+        prop = device.find_property(propName)
         prop.set_cached_value_and_notify(value)
 
 class hqActiveEventProperty(hqProperty):

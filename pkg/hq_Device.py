@@ -31,7 +31,7 @@ class hqDevice(Device):
         activeEvent = hqActiveEventProperty(self)
         self.properties['ActiveEvent'] = activeEvent
 
-        activeEvent.set_RO_Value(self, False)
+        activeEvent.set_RO_Value(self, 'ActiveEvent', False)
 
         """
         self.properties['ActiveEvent'] = Property(self, 'Active Event', 
