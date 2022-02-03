@@ -14,7 +14,7 @@ from pkg.hq_Adapter import hqAdapter
 _DEBUG = False
 _ADAPTER = None
 
-print = functools.partial(print, flush=True)#TODO: figure out this
+#print = functools.partial(print, flush=True)#TODO: figure out this
 
 
 def cleanup(signum, frame):
