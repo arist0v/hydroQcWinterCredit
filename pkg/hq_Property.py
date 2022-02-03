@@ -8,15 +8,13 @@ class hqProperty(Property):
     name = None
     description = None
     
-    def __init__(self, device):
+    def __init__(self, device, name):
         """
         Initialize the object
         
-        device -- the DEvice this property belongs to
+        device -- the device this property belongs to
+        name -- name of the property
         """
-        #Force to provide name in child class
-        if self.name is None:
-            raise NotImplementedError('Subclasses must define name')
         
         #Force to provide description in child class
         if self.description is None:
@@ -37,15 +35,15 @@ class hqProperty(Property):
         prop = device.find_property(propName)
         prop.set_cached_value_and_notify(value)
 
-class hqActiveEventProperty(hqProperty):
+class hq_bool_ro_property(hqProperty):
    """Active Event Property"""
-   name = 'Active Event'#name of the property
-   description={'@type': 'BooleanProperty', 'title': 'Active Event', 'type': 'boolean', 'readOnly' : True,}#description of the property
+   #name = 'Active Event'#name of the property
+   description={'@type': 'BooleanProperty', 'title': name, 'type': 'boolean', 'readOnly' : True,}#description of the property
 
-class hqNextEventProperty(hqProperty):
+class hq_datetime_ro_property(hqProperty):
     """Active Event Property"""
-    name = 'Next Event'#name of the property
-    description={'title': 'Next Event', 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
+    #name = 'Next Event'#name of the property
+    description={'title': name, 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
     
     def set_RO_Value(self, device, propName, value: datetime):
         """
