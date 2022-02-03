@@ -16,18 +16,15 @@ class hqProperty(Property):
         device -- the DEvice this property belongs to
         """
         #Force to provide name in child class
-        if self.name == None:
+        if self.name is None:
             raise NotImplementedError('Subclasses must define name')
-        else:
-            name = self.name
         
         #Force to provide description in child class
-        if self.description == None:
+        if self.description is None:
             raise NotImplementedError('Sublcasses must define description')
-        else:
-            description = self.description
 
-        Property.__init__(self, device, name, description)
+
+        super().__init__(device, self.name, self.description)
 
     def set_RO_Value(self, device, propName, value):
         """
@@ -41,49 +38,15 @@ class hqProperty(Property):
         prop = device.find_property(propName)
         prop.set_cached_value_and_notify(value)
 
-    
-    def set_RO_Time_Value(self, device, propName, value: datetime):
-        """
-        Set a read-only value for date time property
-        
-        device -- device who own the property
-        propName -- property to update
-        value -- value of the property must be a time object
-        """
-
-
-        value = value.strftime("%Y/%m/%d\n %H:%M:%S")
-        prop = device.find_property(propName)
-        prop.set_cached_value_and_notify(value)
-
 class hqActiveEventProperty(hqProperty):
    """Active Event Property"""
    name = 'Active Event'#name of the property
    description={'@type': 'BooleanProperty', 'title': 'Active Event', 'type': 'boolean', 'readOnly' : True,}#description of the property
 
-   def __init__(self, device):
-       """
-       Initialize the Property
-       
-       device -- device who own the property
-       """
-
-       hqProperty.__init__(self, device)
-
 class hqNextEventProperty(hqProperty):
     """Active Event Property"""
     name = 'Next Event'#name of the property
     description={'title': 'Next Event', 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
-
-    def __init__(self, device):
-       """
-       Initialize the Property
-       
-       device -- device who own the property
-       """
-       
-       hqProperty.__init__(self, device)
-
     
     def set_RO_Value(self, device, propName, value: datetime):
         """
