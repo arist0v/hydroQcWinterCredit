@@ -1,12 +1,12 @@
 """Device for hqWinterCreditAdapter"""
 
+import datetime
 from wsgiref.simple_server import WSGIRequestHandler
 from gateway_addon import Device, Property
 
-from pkg.hq_Property import hqActiveEventProperty
+from pkg.hq_Property import hqActiveEventProperty, hqNextEventProperty
 
-import threading
-import time
+from datetime import datetime
 
 class hqDevice(Device):
     """HQ winter Credit Device"""
@@ -28,23 +28,13 @@ class hqDevice(Device):
         
         #SETTINGS PROPRETY FOR DEVICE
 
+        #active event property
         activeEvent = hqActiveEventProperty(self)
         self.properties['ActiveEvent'] = activeEvent
-
         activeEvent.set_RO_Value(self, 'ActiveEvent', False)
 
-        """
-        self.properties['ActiveEvent'] = Property(self, 'Active Event', 
-        {
-            '@type': 'BooleanProperty',
-            'title': 'Active Event',
-            'type': 'boolean',
-            'readOnly' : True,
-        })
-        prop = self.find_property('ActiveEvent')
-        prop.set_cached_value_and_notify(False)
-        """
-        #print(prop)
-        #prop.update(False)
-        #self.notify_property_changed(prop)
-        #self.notify_property_changed(self.find_property('ActiveEvent'))
+        #next event property
+        nextEvent = hqNextEventProperty(self)
+        self.properties['NextEvent'] = nextEvent
+
+        nextEvent.set_RO_Time_Value(self, 'NextEvent', datetime.now())

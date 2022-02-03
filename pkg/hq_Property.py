@@ -1,6 +1,8 @@
 """Property for device Hydro Quebec event for Webthings"""
 
-from gateway_addon import Property, Device
+from time import strftime
+from gateway_addon import Property
+from datetime import datetime
 
 class hqProperty(Property):
     """Property type for HQdata"""
@@ -12,7 +14,6 @@ class hqProperty(Property):
         Initialize the object
         
         device -- the DEvice this property belongs to
-        value -- current falue of this property
         """
         #Force to provide name in child class
         if self.name == None:
@@ -40,6 +41,21 @@ class hqProperty(Property):
         prop = device.find_property(propName)
         prop.set_cached_value_and_notify(value)
 
+    
+    def set_RO_Time_Value(self, device, propName, value: datetime):
+        """
+        Set a read-only value for date time property
+        
+        device -- device who own the property
+        propName -- property to update
+        value -- value of the property must be a time object
+        """
+
+
+        stringValue = value.strftime("%Y/%m/%d, %H:%M:%S")
+        prop = device.find_property(propName)
+        prop.set_cached_value_and_notify(stringValue)
+
 class hqActiveEventProperty(hqProperty):
    """Active Event Property"""
    name = 'Active Event'#name of the property
@@ -50,11 +66,21 @@ class hqActiveEventProperty(hqProperty):
        Initialize the Property
        
        device -- device who own the property
-       value -- value of the property
        """
 
        hqProperty.__init__(self, device)
 
-       #self.set_RO_Value(device, value)
+class hqNextEventProperty(hqProperty):
+   """Active Event Property"""
+   name = 'Next Event'#name of the property
+   description={'@type': 'BooleanProperty', 'title': 'Next Event', 'type': 'string', 'readOnly' : True,}#description of the property
 
+   def __init__(self, device):
+       """
+       Initialize the Property
+       
+       device -- device who own the property
+       """
+
+       hqProperty.__init__(self, device)
 

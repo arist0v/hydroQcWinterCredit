@@ -30,7 +30,7 @@ class hqAdapter(Adapter):
             return
 
         self.pairing = True
-        device = hq_Device.hqDevice(self, "hqDevice12345")
+        device = hq_Device.hqDevice(self, "hqDevice")
         self.handle_device_added(device)
         print("Start Pairing")#DEBUG
 
@@ -42,6 +42,8 @@ class hqAdapter(Adapter):
         """Removing the device from webthings"""
 
         self.handle_device_removed(device)
+        #TODO: Error in log: ERROR  : Error getting thing description for thing with id hqDevice12345: Error: Unable to find thing with id: hqDevice12345
+        #  at /home/node/webthings/gateway/build/webpack:/src/models/things.js:268:1 TO BE FIXED LATER
 
     def cancel_pairing(self):
         """Cancel the pairing process"""
