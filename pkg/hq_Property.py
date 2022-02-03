@@ -24,6 +24,7 @@ class hqProperty(Property):
 
 
         super().__init__(device, name, self.description)
+        print("THIS IS THE VALUE OF NAME: ######## {0} #######".format(name))
 
     def set_RO_Value(self, device, propName, value):
         """
@@ -39,13 +40,13 @@ class hqProperty(Property):
 
 class hq_bool_ro_property(hqProperty):
    """Active Event Property"""
-   #name = 'Active Event'#name of the property
-   description={'@type': 'BooleanProperty', 'title': '\{0\}'.format(name), 'type': 'boolean', 'readOnly' : True,}#description of the property
+
+   description={'@type': 'BooleanProperty', 'title': name, 'type': 'boolean', 'readOnly' : True,}#description of the property
 
 class hq_datetime_ro_property(hqProperty):
     """Active Event Property"""
-    #name = 'Next Event'#name of the property
-    description={'title': '\{0\}'.format(name), 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
+
+    description={'title': name, 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
     
     def set_RO_Value(self, device, propName, value: datetime):
         """
