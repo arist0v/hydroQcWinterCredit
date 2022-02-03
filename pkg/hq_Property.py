@@ -71,16 +71,26 @@ class hqActiveEventProperty(hqProperty):
        hqProperty.__init__(self, device)
 
 class hqNextEventProperty(hqProperty):
-   """Active Event Property"""
-   name = 'Next Event'#name of the property
-   description={'title': 'Next Event', 'type': 'string', 'readOnly' : True,}#description of the property
+    """Active Event Property"""
+    name = 'Next Event'#name of the property
+    description={'title': 'Next Event', 'type': 'string', 'readOnly' : True,}#description of the property
 
-   def __init__(self, device):
+    def __init__(self, device):
        """
        Initialize the Property
        
        device -- device who own the property
        """
-
+       
        hqProperty.__init__(self, device)
+
+    
+    def set_RO_Value(self, device, propName, value: datetime):
+        """
+        modifying the set_RO_Value for datetime object
+        """
+
+        value = value.strftime("%Y/%m/%d\n %H:%M:%S")
+        #super().set_RO_Value
+
 
