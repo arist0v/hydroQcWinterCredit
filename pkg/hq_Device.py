@@ -3,7 +3,7 @@
 import datetime
 from gateway_addon import Device
 
-from pkg.hq_Property import hq_bool_ro_property, hq_datetime_ro_property
+from pkg.hq_Property import hq_bool_ro_property, hq_datetime_ro_property, hq_number_rw_property
 
 from datetime import datetime
 
@@ -53,5 +53,10 @@ class hqDevice(Device):
         lastSync.set_RO_Value(self, 'LastSync', datetime.now())
 
         #pre-heat duration property
+        preHeatDuration = hq_number_rw_property(self, 'Pre-Heat Duration')
+        self.properties['PreHeatDuration'] = preHeatDuration
+        preHeatDuration.set_RO_Value(30)
+        #number in minute read and write from DB
 
         #post heat duration property
+        #number in minute read and write from DB

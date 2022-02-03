@@ -36,7 +36,7 @@ class hqProperty(Property):
         prop.set_cached_value_and_notify(value)
 
 class hq_bool_ro_property(hqProperty):
-   """Active Event Property"""
+   """Boolean Property Read Only"""
 
    def __init__(self, device, name):
        """
@@ -47,8 +47,11 @@ class hq_bool_ro_property(hqProperty):
        self.description={'@type': 'BooleanProperty', 'title': name, 'type': 'boolean', 'readOnly' : True,}#description of the property
        super().__init__(device)
 
+   def set_RO_Value(self, device, propName, value: bool):
+        super().set_RO_Value(device, propName, value)
+
 class hq_datetime_ro_property(hqProperty):
-    """Active Event Property"""
+    """datetime Property Read Only"""
 
     def __init__(self, device, name):
         """
@@ -67,5 +70,21 @@ class hq_datetime_ro_property(hqProperty):
         """
 
         value = value.strftime("%Y/%m/%d\n %H:%M:%S")#TODO:Verify if isoformat could replace strftime
+        super().set_RO_Value(device, propName, value)
+
+class hq_number_rw_property(hqProperty):
+    """Number property, read and write"""
+
+    def __init__(self, device, name):
+        """
+        Initialize the object
+        
+        name -- name of the property
+        """
+
+        self.description={'title': name, 'type': 'number',}#description of the property
+        super().__init__(device)
+
+    def set_RO_Value(self, device, propName, value: int):
         super().set_RO_Value(device, propName, value)
 
