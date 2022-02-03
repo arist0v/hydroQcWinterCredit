@@ -73,7 +73,7 @@ class hqActiveEventProperty(hqProperty):
 class hqNextEventProperty(hqProperty):
    """Active Event Property"""
    name = 'Next Event'#name of the property
-   description={'@type': 'BooleanProperty', 'title': 'Next Event', 'type': 'string', 'readOnly' : True,}#description of the property
+   description={'title': 'Next Event', 'type': 'string', 'readOnly' : True,}#description of the property
 
    def __init__(self, device):
        """
