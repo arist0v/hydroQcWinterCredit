@@ -1,5 +1,7 @@
 """Property for device Hydro Quebec event for Webthings"""
 
+from os import name
+from xml.dom.minidom import NamedNodeMap
 from gateway_addon import Property
 from datetime import datetime
 
@@ -21,7 +23,7 @@ class hqProperty(Property):
             raise NotImplementedError('Sublcasses must define description')
 
 
-        super().__init__(device, self.name, self.description)
+        super().__init__(device, name, self.description)
 
     def set_RO_Value(self, device, propName, value):
         """
