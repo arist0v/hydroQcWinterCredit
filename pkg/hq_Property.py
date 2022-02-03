@@ -54,7 +54,7 @@ class hqProperty(Property):
 
         value = value.strftime("%Y/%m/%d\n %H:%M:%S")
         prop = device.find_property(propName)
-        prop.set_cached_value_and_notify(stringValue)
+        prop.set_cached_value_and_notify(value)
 
 class hqActiveEventProperty(hqProperty):
    """Active Event Property"""
