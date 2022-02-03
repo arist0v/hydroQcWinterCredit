@@ -45,16 +45,16 @@ class hqActiveEventProperty(hqProperty):
    name = 'Active Event'#name of the property
    description={'@type': 'BooleanProperty', 'title': 'Active Event', 'type': 'boolean', 'readOnly' : True,}#description of the property
 
-   def __init__(self, device, value):
+   def __init__(self, device):
        """
        Initialize the Property
        
        device -- device who own the property
        value -- value of the property
        """
-       print(value)
+
        hqProperty.__init__(self, device)
 
-       self.set_RO_Value(device, value)
+       #self.set_RO_Value(device, value)
 
 
