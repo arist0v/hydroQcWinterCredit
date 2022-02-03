@@ -26,7 +26,7 @@ class hqProperty(Property):
         else:
             description = self.description
 
-        Property.__init__(device, name, description)
+        Property.__init__(self, device, name, description)
 
     def set_RO_Value(self, device, value):
         """
@@ -53,7 +53,7 @@ class hqActiveEventProperty(hqProperty):
        value -- starting value of the property
        """
        
-       hqProperty.__init__(device)
+       hqProperty.__init__(self, device)
 
        self.set_RO_Value(device, value)
 
