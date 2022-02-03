@@ -73,7 +73,7 @@ class hqActiveEventProperty(hqProperty):
 class hqNextEventProperty(hqProperty):
     """Active Event Property"""
     name = 'Next Event'#name of the property
-    description={'title': 'Next Event', 'type': 'string', 'readOnly' : True,}#description of the property
+    description={'title': 'Next Event', 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
 
     def __init__(self, device):
        """
@@ -91,6 +91,5 @@ class hqNextEventProperty(hqProperty):
         """
 
         value = value.strftime("%Y/%m/%d\n %H:%M:%S")
-        #super().set_RO_Value
-
+        super().set_RO_Value(device, propName, value)
 
