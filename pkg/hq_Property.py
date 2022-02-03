@@ -20,7 +20,7 @@ class hqProperty(Property):
 
         #Force to provide description in child class
         if self.name is None:
-            raise NotImplementedError('Sublcasses must define description')
+            raise NotImplementedError('Sublcasses must define name')
         
         #Force to provide description in child class
         if self.description is None:
@@ -45,7 +45,7 @@ class hq_bool_ro_property(hqProperty):
    """Active Event Property"""
 
    def __init__(self, device, title):
-       
+       self.name = title
        self.description={'@type': 'BooleanProperty', 'title': title, 'type': 'boolean', 'readOnly' : True,}#description of the property
        super().__init__(device)
 
@@ -53,7 +53,7 @@ class hq_datetime_ro_property(hqProperty):
     """Active Event Property"""
 
     def __init__(self, device, title):
-        
+        self.name = title
         self.description={'title': title, 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
         super().__init__(device)    
     
