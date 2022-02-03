@@ -6,7 +6,7 @@ import signal
 import sys
 import time
 
-sys.path.append(path.join(path.dirname(path.abspath(__file__)), 'lib'))#TODO: Figure this out
+sys.path.append(path.join(path.dirname(path.abspath(__file__)), 'lib'))
 
 from pkg.hq_Adapter import hqAdapter
 

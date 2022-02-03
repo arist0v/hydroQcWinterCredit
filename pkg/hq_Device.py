@@ -35,5 +35,4 @@ class hqDevice(Device):
         #next event property
         nextEvent = hqNextEventProperty(self)
         self.properties['NextEvent'] = nextEvent
-
         nextEvent.set_RO_Value(self, 'NextEvent', datetime.now())
