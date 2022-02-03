@@ -52,7 +52,9 @@ class hq_bool_ro_property(hqProperty):
 class hq_datetime_ro_property(hqProperty):
     """Active Event Property"""
 
-    description={'title': title, 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
+    def __init__(self, device, title):
+        description={'title': title, 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
+        super().__init__(device)    
     
     def set_RO_Value(self, device, propName, value: datetime):
         """
