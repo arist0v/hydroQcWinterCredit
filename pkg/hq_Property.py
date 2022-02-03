@@ -10,21 +10,26 @@ class hqProperty(Property):
     name = None
     description = None
     
-    def __init__(self, device, name):
+    def __init__(self, device, title):
         """
         Initialize the object
         
         device -- the device this property belongs to
         name -- name of the property
         """
+
+        #Force to provide description in child class
+        if self.name is None:
+            raise NotImplementedError('Sublcasses must define description')
         
         #Force to provide description in child class
         if self.description is None:
             raise NotImplementedError('Sublcasses must define description')
 
+        self.title = title
 
         super().__init__(device, name, self.description)
-        print("THIS IS THE VALUE OF NAME: ######## {0} #######".format(name))
+        
 
     def set_RO_Value(self, device, propName, value):
         """
@@ -41,12 +46,12 @@ class hqProperty(Property):
 class hq_bool_ro_property(hqProperty):
    """Active Event Property"""
 
-   description={'@type': 'BooleanProperty', 'title': name, 'type': 'boolean', 'readOnly' : True,}#description of the property
+   description={'@type': 'BooleanProperty', 'title': title, 'type': 'boolean', 'readOnly' : True,}#description of the property
 
 class hq_datetime_ro_property(hqProperty):
     """Active Event Property"""
 
-    description={'title': name, 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
+    description={'title': title, 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
     
     def set_RO_Value(self, device, propName, value: datetime):
         """
