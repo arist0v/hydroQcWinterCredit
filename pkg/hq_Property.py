@@ -7,7 +7,6 @@ from datetime import datetime
 
 class hqProperty(Property):
     """Property type for HQdata"""
-    name = None
     description = None
     
     def __init__(self, device):
@@ -15,12 +14,7 @@ class hqProperty(Property):
         Initialize the object
         
         device -- the device this property belongs to
-        name -- name of the property
         """
-
-        #Force to provide description in child class
-        if self.name is None:
-            raise NotImplementedError('Sublcasses must define name')
         
         #Force to provide description in child class
         if self.description is None:
@@ -44,22 +38,32 @@ class hqProperty(Property):
 class hq_bool_ro_property(hqProperty):
    """Active Event Property"""
 
-   def __init__(self, device, title):
-       self.name = title
-       self.description={'@type': 'BooleanProperty', 'title': title, 'type': 'boolean', 'readOnly' : True,}#description of the property
+   def __init__(self, device, name):
+       """
+       Initialize the objects
+
+       name -- name of the property
+       """
+       self.description={'@type': 'BooleanProperty', 'title': name, 'type': 'boolean', 'readOnly' : True,}#description of the property
        super().__init__(device)
 
 class hq_datetime_ro_property(hqProperty):
     """Active Event Property"""
 
-    def __init__(self, device, title):
-        self.name = title
-        self.description={'title': title, 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
+    def __init__(self, device, name):
+        """
+        Initialize the object
+
+        name -- name of the property
+        """
+        self.description={'title': name, 'type': 'string', 'readOnly' : True,}#description of the propertybon la reponse semble etre non
         super().__init__(device)    
     
     def set_RO_Value(self, device, propName, value: datetime):
         """
         modifying the set_RO_Value for datetime object
+
+        value -- value of the property, must be datetime
         """
 
         value = value.strftime("%Y/%m/%d\n %H:%M:%S")#TODO:Verify if isoformat could replace strftime
