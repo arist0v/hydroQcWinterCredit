@@ -82,7 +82,7 @@ class hq_number_rw_property(hqProperty):
         name -- name of the property
         """
 
-        self.description={'title': name, 'type': 'number',}#description of the property
+        self.description={'@type': 'TargetTemperatureProperty','title': name, 'type': 'number',}#description of the property
         super().__init__(device)
 
     def set_RO_Value(self, device, propName, value: int):
