@@ -3,7 +3,7 @@
 import datetime
 from gateway_addon import Device
 
-from pkg.hq_Property import hq_bool_ro_property, hq_datetime_ro_property, hq_number_rw_property
+from pkg.hq_Property import hq_bool_ro_property, hq_datetime_ro_property, hq_minute_rw_property
 
 from datetime import datetime
 
