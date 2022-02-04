@@ -53,7 +53,7 @@ class hqDevice(Device):
         lastSync.set_RO_Value(self, 'LastSync', datetime.now())
 
         #pre-heat duration property
-        preHeatDuration = hq_number_rw_property(self, 'Pre-Heat Duration')
+        preHeatDuration = hq_minute_rw_property(self, 'Pre-Heat Duration')
         self.properties['PreHeatDuration'] = preHeatDuration
         preHeatDuration.set_RO_Value(self, 'PreHeatDuration', 30)
         #number in minute read and write from DB

@@ -72,7 +72,7 @@ class hq_datetime_ro_property(hqProperty):
         value = value.strftime("%Y/%m/%d\n %H:%M:%S")#TODO:Verify if isoformat could replace strftime
         super().set_RO_Value(device, propName, value)
 
-class hq_number_rw_property(hqProperty):
+class hq_minute_rw_property(hqProperty):
     """Number property, read and write"""
 
     def __init__(self, device, name):
