@@ -31,7 +31,7 @@ class hqAdapter(Adapter):
             return
 
         self.pairing = True
-        device = hq_Device.hqDevice(self, "hqDevice")
+        device = hq_Device.hqDevice(self, "hqDevice", self.config)
         self.handle_device_added(device)
         print("Start Pairing")#DEBUG
 
