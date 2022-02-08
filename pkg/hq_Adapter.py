@@ -14,7 +14,7 @@ class hqAdapter(Adapter):
         """initialize the object"""
         self.name = self.__class__.__name__
         Adapter.__init__(self,'hydroQcWinterCredit','hydroQcWinterCredit')#argument: self, id for the package, name of the package
-        config = self.load_db_config(self.get_id())
+        self.config = self.load_db_config(self.get_id())
 
         if not config:
             print("Can't load config from Database")
@@ -30,7 +30,7 @@ class hqAdapter(Adapter):
             return
 
         self.pairing = True
-        device = hq_Device.hqDevice(self, "hqDevice")
+        device = hq_Device.hqDevice(self, "hqDevice", self.config)
         self.handle_device_added(device)
         print("Start Pairing")#DEBUG
 
@@ -39,14 +39,14 @@ class hqAdapter(Adapter):
         self.pairing = False
 
         self.device = device
-
+    """
     def remove_device(self, device):
-        """Removing the device from webthings"""
+        Removing the device from webthings
 
         #self.handle_device_removed(device)
         #TODO: Error in log: ERROR  : Error getting thing description for thing with id hqDevice12345: Error: Unable to find thing with id: hqDevice12345
         #  at /home/node/webthings/gateway/build/webpack:/src/models/things.js:268:1 TO BE FIXED LATER
-
+    """
     def cancel_pairing(self):
         """Cancel the pairing process"""
         self.pairing = False
