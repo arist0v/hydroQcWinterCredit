@@ -61,7 +61,7 @@ class hqAdapter(Adapter):
 
         Return the config object as dict
         """
-        database = Database[package_name]
+        database = Database(package_name)
         if not database.open():
             return
         config = database.load_config()
