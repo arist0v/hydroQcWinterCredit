@@ -14,9 +14,9 @@ class hqAdapter(Adapter):
         """initialize the object"""
         self.name = self.__class__.__name__
         Adapter.__init__(self,'hydroQcWinterCredit','hydroQcWinterCredit')#argument: self, id for the package, name of the package
-        config = self.load_db_config(self.get_id())
+        self.config = self.load_db_config(self.get_id())
        
-        if not config:
+        if not self.config:
             print("Can't load config from Database")
             return
         
@@ -61,7 +61,7 @@ class hqAdapter(Adapter):
         """
         database = Database(package_name)
         if not database.open():
-            print("Can't open database")
+            print("Can't open database for package: {0}".format(package_name))
             return
         config = database.load_config()
         database.close()
