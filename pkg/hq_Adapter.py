@@ -16,10 +16,11 @@ class hqAdapter(Adapter):
         Adapter.__init__(self,'hydroQcWinterCredit','hydroQcWinterCredit')#argument: self, id for the package, name of the package
         config = self.load_db_config(self.get_id)
        
-
+        """
         if not config:
             print("Can't load config from Database")
             return
+        """
 
         self.pairing=False
         self.start_pairing(_TIMEOUT)
