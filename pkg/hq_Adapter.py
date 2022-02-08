@@ -14,7 +14,7 @@ class hqAdapter(Adapter):
         """initialize the object"""
         self.name = self.__class__.__name__
         Adapter.__init__(self,'hydroQcWinterCredit','hydroQcWinterCredit')#argument: self, id for the package, name of the package
-        config = self.load_db_config(self.get_id)
+        config = self.load_db_config(self.get_id())
        
         """
         if not config:
