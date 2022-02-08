@@ -38,6 +38,8 @@ class hqAdapter(Adapter):
 
         self.pairing = False
 
+        self.device = device
+
     def remove_device(self, device):
         """Removing the device from webthings"""
 
@@ -68,13 +70,14 @@ class hqAdapter(Adapter):
 
         return config
 
-    def save_config_to_db(self, package_name):
+    def save_config_to_db(self, package_name, config):
         """
         save configuration to DB
 
         package_name -- name of the package as shown in manifest.json
+        config -- config dict to save in DB
         """
         database = Database[package_name]
         database.open()
-        database.save_config()
+        database.save_config(config)
         database.close()
