@@ -65,8 +65,9 @@ class hqAdapter(Adapter):
             return
         config = database.load_config()
         database.close()
-
+        print(config)
         if not config:
+            print("Can't load data from config inside")
             return
 
         return config
