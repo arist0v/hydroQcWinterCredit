@@ -60,15 +60,13 @@ class hqAdapter(Adapter):
 
         Return the config object as dict
         """
-        database = Database(package_name)
+        database = Database('hydroQcWinterCredit')#TODO: edited for debug
         if not database.open():
+            print("Can't open database")
             return
         config = database.load_config()
         database.close()
         print(config)
-        if not config:
-            print("Can't load data from config inside")
-            return
 
         return config
 
