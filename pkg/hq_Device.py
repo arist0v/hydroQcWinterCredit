@@ -10,7 +10,7 @@ from datetime import datetime
 class hqDevice(Device):
     """HQ winter Credit Device"""
 
-    def __init__(self, adapter, _id, config):
+    def __init__(self, adapter, _id):
         """
         Initialize the object
         
@@ -56,11 +56,11 @@ class hqDevice(Device):
         #pre-heat duration property
         preHeatDuration = hq_minute_rw_property(self, 'Pre-Heat Duration')
         self.properties['PreHeatDuration'] = preHeatDuration
-        preHeatDuration.set_RO_Value(self, 'PreHeatDuration', config['preHeatDelay'])#TODO set value from DB and write back to DB
+        preHeatDuration.set_RO_Value(self, 'PreHeatDuration', 30)#TODO set value from DB and write back to DB
     
 
         #post heat duration property
         postHeatDuration = hq_minute_rw_property(self, 'Post-Heat Duration')
         self.properties['PostHeatDuration'] = postHeatDuration
-        postHeatDuration.set_RO_Value(self, 'PostHeatDuration', config['postHeatDelay'])
+        postHeatDuration.set_RO_Value(self, 'PostHeatDuration', 30)
         

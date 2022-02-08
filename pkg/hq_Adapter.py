@@ -14,10 +14,10 @@ class hqAdapter(Adapter):
         """initialize the object"""
         self.name = self.__class__.__name__
         Adapter.__init__(self,'hydroQcWinterCredit','hydroQcWinterCredit')#argument: self, id for the package, name of the package
-        self.config = self.load_db_config(self.get_id)
+        config = self.load_db_config(self.get_id)
        
 
-        if not self.config:
+        if not config:
             print("Can't load config from Database")
             return
 
@@ -31,7 +31,7 @@ class hqAdapter(Adapter):
             return
 
         self.pairing = True
-        device = hq_Device.hqDevice(self, "hqDevice", self.config)
+        device = hq_Device.hqDevice(self, "hqDevice")
         self.handle_device_added(device)
         print("Start Pairing")#DEBUG
 
