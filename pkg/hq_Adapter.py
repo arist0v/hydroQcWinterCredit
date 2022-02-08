@@ -39,7 +39,6 @@ class hqAdapter(Adapter):
 
         self.pairing = False
 
-        self.device = device
     """
     def remove_device(self, device):
         Removing the device from webthings

@@ -87,4 +87,4 @@ class hq_minute_rw_property(hqProperty):
 
     def set_RO_Value(self, device, propName, value: int):
         super().set_RO_Value(device, propName, value)
-
+    
