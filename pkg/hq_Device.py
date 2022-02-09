@@ -56,7 +56,9 @@ class hqDevice(Device):
         #pre-heat duration property
         preHeatDuration = hq_minute_rw_property(self, 'Pre-Heat Duration')
         self.properties['PreHeatDuration'] = preHeatDuration
-        preHeatDuration.set_RO_Value(self, 'PreHeatDuration', config['preHeatDelay'])
+        preHeatDuration.set_value(config['preHeatDelay'])#.set_RO_Value(self, 'PreHeatDuration', config['preHeatDelay'])
+
+        #TODO thing don'T keep value after changing in thing, 
     
 
         #post heat duration property
