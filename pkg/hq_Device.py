@@ -2,6 +2,7 @@
 from gateway_addon import Device
 
 from pkg.hq_Property import hq_bool_ro_property, hq_datetime_ro_property, hq_minute_rw_property
+from pkg.hq_DataClass import hq_config_data
 
 from datetime import datetime, time
 
