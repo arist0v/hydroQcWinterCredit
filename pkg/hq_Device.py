@@ -1,11 +1,12 @@
 """Device for hqWinterCreditAdapter"""
-
-import datetime
 from gateway_addon import Device
 
 from pkg.hq_Property import hq_bool_ro_property, hq_datetime_ro_property, hq_minute_rw_property
 
-from datetime import datetime
+from datetime import datetime, time
+
+_POLL_INTERVAL = 5 #interval to check if data changed
+_ONLINE_POLL_INTERVAL = 3 * 60 #online check for updated data, X hours time 60 seconde to have te result in seconds
 
 class hqDevice(Device):
     """HQ winter Credit Device"""
@@ -31,40 +32,49 @@ class hqDevice(Device):
         #active event property
         activeEvent = hq_bool_ro_property(self, 'Active Event')
         self.properties['ActiveEvent'] = activeEvent
-        activeEvent.set_RO_Value(self, 'ActiveEvent', False)
+        #activeEvent.set_RO_Value(self, 'ActiveEvent', False)
 
         #pre-heat property
         preHeatEvent = hq_bool_ro_property(self, 'Pre-Heat Event')
         self.properties['PreHeatEvent'] = preHeatEvent
-        preHeatEvent.set_RO_Value(self, 'PreHeatEvent', False)
+        #preHeatEvent.set_RO_Value(self, 'PreHeatEvent', False)
 
         #post-heat property
         postHeatEvent = hq_bool_ro_property(self, 'Post-Heat Event')
         self.properties['PostHeatEvent'] = postHeatEvent
-        postHeatEvent.set_RO_Value(self, 'PostHeatEvent', False)
+        #postHeatEvent.set_RO_Value(self, 'PostHeatEvent', False)
 
         #next event property
         nextEvent = hq_datetime_ro_property(self, 'Next Event')
         self.properties['NextEvent'] = nextEvent
-        nextEvent.set_RO_Value(self, 'NextEvent', datetime.now())
+       #nextEvent.set_RO_Value(self, 'NextEvent', datetime.now())
 
         #last sync property
         lastSync = hq_datetime_ro_property(self, 'Last Sync')
         self.properties['LastSync'] = lastSync
-        lastSync.set_RO_Value(self, 'LastSync', datetime.now())
+        #lastSync.set_RO_Value(self, 'LastSync', datetime.now())
 
         #pre-heat duration property
         preHeatDuration = hq_minute_rw_property(self, 'Pre-Heat Duration')
         self.properties['PreHeatDuration'] = preHeatDuration
-        preHeatDuration.set_cached_value(config['preHeatDelay'])
+        #preHeatDuration.set_cached_value(config['preHeatDelay'])
         #value = config['preHeatDelay']
-        #preHeatDuration.set_value(value)#.set_RO_Value(self, 'PreHeatDuration', config['preHeatDelay'])
-
-        #TODO thing don'T keep value after changing in thing, 
-    
+        #preHeatDuration.set_value(value)#.set_RO_Value(self, 'PreHeatDuration', config['preHeatDelay'])    
 
         #post heat duration property
         postHeatDuration = hq_minute_rw_property(self, 'Post-Heat Duration')
         self.properties['PostHeatDuration'] = postHeatDuration
-        postHeatDuration.set_RO_Value(self, 'PostHeatDuration', config['postHeatDelay'])
-        
+        #postHeatDuration.set_RO_Value(self, 'PostHeatDuration', config['postHeatDelay'])
+
+    def poll(self, datas):
+        """
+        poll for changes
+        must be called in a thread
+        """
+
+        while True:
+                time.sleep(_POLL_INTERVAL)
+
+                for prop in self.properties.values:
+
+                    prop.
