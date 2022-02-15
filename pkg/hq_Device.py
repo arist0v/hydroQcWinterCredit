@@ -78,10 +78,17 @@ class hqDevice(Device):
 
         datas - datas to compare
         """
+        #TODO: fetch data
+        #compare data
+        ##if fetched data is different,  update it with prop.set_RO_Value()
 
         while True:
                 time.sleep(_POLL_INTERVAL)
 
                 for prop in self.properties:
 
-                    prop.
+                    if prop.name == 'NextEvent':
+                        prop.set_RO_Value(self, prop.name, datas.nextEvent)
+                    
+                    if prop.name == 'LastSync':
+                        prop.set_RO_Value(self, prop.name, datas.lastSync)
