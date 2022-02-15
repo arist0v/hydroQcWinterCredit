@@ -95,16 +95,25 @@ class hqDevice(Device):
 
                     if prop.name == 'NextEvent':
                         #do every update for next event
-                        prop.set_RO_Value(self, prop.name, datas.nextEvent)
+                        if prop.value == datas.nextEvent:
+                            continue
+                        else:
+                            prop.set_RO_Value(self, prop.name, datas.nextEvent)
                     
                     if prop.name == 'LastSync':
-                        prop.set_RO_Value(self, prop.name, datas.lastSync)
+                        if prop.value == datas.lastSync:
+                            continue
+                        else:
+                            prop.set_RO_Value(self, prop.name, datas.lastSync)
 
                     if prop.name == 'ActiveEvent':
                         #do every check and update for active event
+                        print("must do something here")
 
                     if prop.name == 'PreHeatEvent':
                         #do pre heat event check and update
+                        print("must do something here")
 
                     if prop.name == 'PostHeatEvent':
                         #do post heat event check and update
+                        print("must do something here")
