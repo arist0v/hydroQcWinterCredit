@@ -84,11 +84,27 @@ class hqDevice(Device):
 
         while True:
                 time.sleep(_POLL_INTERVAL)
+                
+                #update data with hq api call
+
+
+
+                #do check and update for every property
 
                 for prop in self.properties:
 
                     if prop.name == 'NextEvent':
+                        #do every update for next event
                         prop.set_RO_Value(self, prop.name, datas.nextEvent)
                     
                     if prop.name == 'LastSync':
                         prop.set_RO_Value(self, prop.name, datas.lastSync)
+
+                    if prop.name == 'ActiveEvent':
+                        #do every check and update for active event
+
+                    if prop.name == 'PreHeatEvent':
+                        #do pre heat event check and update
+
+                    if prop.name == 'PostHeatEvent':
+                        #do post heat event check and update
