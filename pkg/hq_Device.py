@@ -7,12 +7,11 @@ from pkg.hq_DataClass import hq_config_data
 from datetime import datetime, time
 
 _POLL_INTERVAL = 5 #interval to check if data changed
-_ONLINE_POLL_INTERVAL = 3 * 60 #online check for updated data, X hours time 60 seconde to have te result in seconds
 
 class hqDevice(Device):
     """HQ winter Credit Device"""
 
-    def __init__(self, adapter, _id, config):
+    def __init__(self, adapter, _id):
         """
         Initialize the object
         
@@ -27,6 +26,8 @@ class hqDevice(Device):
         #self.description = 'Hydro Quebec Winter Credit Event 1'#not sure where it'S used
         self.title = 'Hydro Quebec Winter Credit Event'#This appear in the text bar when adding the device and is the default name of the device
         self.name = 'Hydro Quebec Winter Credit Event 3'#not sure where it's used
+
+        datas = hq_config_data(adapter.config['preHeatDelay'], adapter.config['postHeatDelay'], datetime.now(), datetime.now)#for developement purpose, data will be change later
         
         #SETTINGS PROPRETY FOR DEVICE
 
@@ -70,15 +71,17 @@ class hqDevice(Device):
         self.properties['PostHeatDuration'] = postHeatDuration
         #postHeatDuration.set_RO_Value(self, 'PostHeatDuration', config['postHeatDelay'])
         """
-    def poll(self, datas):
+    def poll(self, datas: hq_config_data):
         """
         poll for changes
         must be called in a thread
+
+        datas - datas to compare
         """
 
         while True:
                 time.sleep(_POLL_INTERVAL)
 
-                for prop in self.properties.values:
+                for prop in self.properties:
 
                     prop.
