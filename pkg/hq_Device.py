@@ -54,6 +54,9 @@ class hqDevice(Device):
         lastSync = hq_datetime_ro_property(self, 'Last Sync')
         self.properties['LastSync'] = lastSync
         #lastSync.set_RO_Value(self, 'LastSync', datetime.now())
+        """
+
+        #Those property will be disabled and only keep in add-on settings page for now
 
         #pre-heat duration property
         preHeatDuration = hq_minute_rw_property(self, 'Pre-Heat Duration')
@@ -66,7 +69,7 @@ class hqDevice(Device):
         postHeatDuration = hq_minute_rw_property(self, 'Post-Heat Duration')
         self.properties['PostHeatDuration'] = postHeatDuration
         #postHeatDuration.set_RO_Value(self, 'PostHeatDuration', config['postHeatDelay'])
-
+        """
     def poll(self, datas):
         """
         poll for changes
