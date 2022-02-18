@@ -5,7 +5,6 @@ from gateway_addon import Device
 from pkg.hq_Property import hq_bool_ro_property, hq_datetime_ro_property, hq_minute_rw_property
 from pkg.hq_DataClass import hq_config_data
 from pkg.hq_webuser import hq_webuser
-from hydroqc.winter_credit import event
 
 from datetime import datetime, time
 
@@ -101,7 +100,7 @@ class hqDevice(Device):
             
             #nextEvent is now the closest event
                             
-            
+            #NOTE: preHeat event = nextEvent - dateime.timedelta(preHeatDelay)
             #do check and update for every property
             """
             for prop in self.properties:
