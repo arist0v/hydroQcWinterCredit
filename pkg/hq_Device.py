@@ -1,8 +1,8 @@
 """Device for hqWinterCreditAdapter"""
-from operator import ne
+
 from gateway_addon import Device
 
-from pkg.hq_Property import hq_bool_ro_property, hq_datetime_ro_property, hq_minute_rw_property
+from pkg.hq_Property import hq_bool_ro_property, hq_datetime_ro_property
 from pkg.hq_DataClass import hq_config_data
 from pkg.hq_webuser import hq_webuser
 
@@ -58,7 +58,6 @@ class hqDevice(Device):
         self.properties['LastSync'] = lastSync
         #lastSync.set_RO_Value(self, 'LastSync', datetime.now())
         """
-
         #Those property will be disabled and only keep in add-on settings page for now
 
         #pre-heat duration property

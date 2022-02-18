@@ -1,6 +1,5 @@
 """Hydro-Quebec adapter to get winter credit event as a thing for webthings gateway"""
 
-from socket import timeout
 import time
 from gateway_addon import Adapter, Database
 from pkg import hq_Device
@@ -67,15 +66,3 @@ class hqAdapter(Adapter):
         database.close()
         
         return config
-
-    def save_config_to_db(self, package_name, config):
-        """
-        save configuration to DB
-
-        package_name -- name of the package as shown in manifest.json
-        config -- config dict to save in DB
-        """
-        database = Database[package_name]
-        database.open()
-        database.save_config(config)
-        database.close()

@@ -8,8 +8,6 @@ root_folder = os.path.abspath(os.path.dirname(os.path.dirname(os.path.abspath(__
 sys.path.append(root_folder)
 
 from hydroqc import webuser
-#from hydroqc import webuser
-
 
 class hq_webuser(webuser.WebUser):
     """HQ web user connection"""
@@ -18,7 +16,7 @@ class hq_webuser(webuser.WebUser):
         """
         init the object
         """
-        #TODO:remove if not used
+        #used to add a default verify_ssl=False
         super().__init__(username, password, verify_ssl, log_level, http_log_level)
 
     async def async_func(self):
@@ -40,7 +38,7 @@ class hq_webuser(webuser.WebUser):
         """
         get all peak events
         
-        return events as list of dict {'start' : X, 'end' : Y }
+        return events as list of dict ex: [{'start' : X, 'end' : Y },]
         """
         events = []
         loop= asyncio.get_event_loop()
