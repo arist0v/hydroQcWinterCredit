@@ -1,8 +1,14 @@
 """Web user class for HQ website connection to pull """
 
 import asyncio
+import sys
+import os
+
+root_folder = os.path.abspath(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(root_folder)
 
 from hydroqc import webuser
+#from hydroqc import webuser
 
 
 class hq_webuser(webuser.WebUser):
@@ -43,4 +49,5 @@ if __name__ == "__main__":
     """
     hqWebUser = hq_webuser('USERNAME', 'PASSWORD')
     events = hqWebUser.get_events()
-    print("TEST DATA: {0}".format(events))
+    for event in events:
+        print(event.to_dict())

@@ -3,6 +3,8 @@ from gateway_addon import Device
 
 from pkg.hq_Property import hq_bool_ro_property, hq_datetime_ro_property, hq_minute_rw_property
 from pkg.hq_DataClass import hq_config_data
+from pkg.hq_webuser import hq_webuser
+from hydroqc.winter_credit import event
 
 from datetime import datetime, time
 
@@ -71,26 +73,24 @@ class hqDevice(Device):
         self.properties['PostHeatDuration'] = postHeatDuration
         #postHeatDuration.set_RO_Value(self, 'PostHeatDuration', config['postHeatDelay'])
         """
-    def poll(self, datas: hq_config_data):
+    def poll(self):
         """
         poll for changes
         must be called in a thread
-
-        datas - datas to compare
         """
         #TODO: fetch data
         #compare data
         ##if fetched data is different,  update it with prop.set_RO_Value()
-
+        username = self.adapter.config['hydroQcUsername']
+        password = self.adapter.config['hydroQcPassword']
+        webUser = hq_webuser(username, password)
         while True:
                 time.sleep(_POLL_INTERVAL)
                 
-                #update data with hq api call
-
-
-
+                events = webUser.get_events()
+                print(events)
                 #do check and update for every property
-
+                """
                 for prop in self.properties:
 
                     if prop.name == 'NextEvent':
@@ -117,3 +117,4 @@ class hqDevice(Device):
                     if prop.name == 'PostHeatEvent':
                         #do post heat event check and update
                         print("must do something here")
+                """
