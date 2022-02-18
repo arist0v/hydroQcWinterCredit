@@ -1,4 +1,5 @@
 """Device for hqWinterCreditAdapter"""
+from operator import ne
 from gateway_addon import Device
 
 from pkg.hq_Property import hq_bool_ro_property, hq_datetime_ro_property, hq_minute_rw_property
@@ -84,37 +85,49 @@ class hqDevice(Device):
         username = self.adapter.config['hydroQcUsername']
         password = self.adapter.config['hydroQcPassword']
         webUser = hq_webuser(username, password)
+        
         while True:
-                time.sleep(_POLL_INTERVAL)
+            nextEvent = None
+            time.sleep(_POLL_INTERVAL)
+            now = datetime.now()
+            
+            events = webUser.get_events()
+            for event in events:
+                startEvent= datetime.strptime(event['start'])
+                if startEvent > now:
+                    if not nextEvent == None:
+                        if startEvent < nextEvent['start']:
+                            nextEvent = event
+            
+            #nextEvent is now the closest event
+                            
+            
+            #do check and update for every property
+            """
+            for prop in self.properties:
+
+                if prop.name == 'NextEvent':
+                    #do every update for next event
+                    if prop.value == datas.nextEvent:
+                        continue
+                    else:
+                        prop.set_RO_Value(self, prop.name, datas.nextEvent)
                 
-                events = webUser.get_events()
-                print(events)
-                #do check and update for every property
-                """
-                for prop in self.properties:
+                if prop.name == 'LastSync':
+                    if prop.value == datas.lastSync:
+                        continue
+                    else:
+                        prop.set_RO_Value(self, prop.name, datas.lastSync)
 
-                    if prop.name == 'NextEvent':
-                        #do every update for next event
-                        if prop.value == datas.nextEvent:
-                            continue
-                        else:
-                            prop.set_RO_Value(self, prop.name, datas.nextEvent)
-                    
-                    if prop.name == 'LastSync':
-                        if prop.value == datas.lastSync:
-                            continue
-                        else:
-                            prop.set_RO_Value(self, prop.name, datas.lastSync)
+                if prop.name == 'ActiveEvent':
+                    #do every check and update for active event
+                    print("must do something here")
 
-                    if prop.name == 'ActiveEvent':
-                        #do every check and update for active event
-                        print("must do something here")
+                if prop.name == 'PreHeatEvent':
+                    #do pre heat event check and update
+                    print("must do something here")
 
-                    if prop.name == 'PreHeatEvent':
-                        #do pre heat event check and update
-                        print("must do something here")
-
-                    if prop.name == 'PostHeatEvent':
-                        #do post heat event check and update
-                        print("must do something here")
-                """
+                if prop.name == 'PostHeatEvent':
+                    #do post heat event check and update
+                    print("must do something here")
+            """
