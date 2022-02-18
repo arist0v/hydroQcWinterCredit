@@ -23,3 +23,9 @@ DONE:
 TODO:
 -try to set the password field as password and not text
 
+CREDIT:
+Thank you to all those who have contributed to Hydro Quebec API Wrapper project : https://gitlab.com/hydroqc/hydroqc on wich i based part of my work
+
+NOTE:
+This project is not an official Hydro Quebec project.
+
