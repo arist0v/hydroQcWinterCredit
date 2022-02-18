@@ -4,8 +4,8 @@ from datetime import datetime
 
 @dataclass
 class hq_config_data:
-    preHeatDelay: int
-    postHeatDelay: int
+    #preHeatDelay: int
+    #postHeatDelay: int
     lastSync: datetime
     nextEvent: datetime
     #eventTable#TODO: create a table to store multiple next event and not just one

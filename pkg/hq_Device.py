@@ -7,12 +7,11 @@ from pkg.hq_DataClass import hq_config_data
 from datetime import datetime, time
 
 _POLL_INTERVAL = 5 #interval to check if data changed
-_ONLINE_POLL_INTERVAL = 3 * 60 #online check for updated data, X hours time 60 seconde to have te result in seconds
 
 class hqDevice(Device):
     """HQ winter Credit Device"""
 
-    def __init__(self, adapter, _id, config):
+    def __init__(self, adapter, _id):
         """
         Initialize the object
         
@@ -27,6 +26,8 @@ class hqDevice(Device):
         #self.description = 'Hydro Quebec Winter Credit Event 1'#not sure where it'S used
         self.title = 'Hydro Quebec Winter Credit Event'#This appear in the text bar when adding the device and is the default name of the device
         self.name = 'Hydro Quebec Winter Credit Event 3'#not sure where it's used
+
+        datas = hq_config_data(adapter.config['preHeatDelay'], adapter.config['postHeatDelay'], datetime.now(), datetime.now)#for developement purpose, data will be change later
         
         #SETTINGS PROPRETY FOR DEVICE
 
@@ -54,6 +55,9 @@ class hqDevice(Device):
         lastSync = hq_datetime_ro_property(self, 'Last Sync')
         self.properties['LastSync'] = lastSync
         #lastSync.set_RO_Value(self, 'LastSync', datetime.now())
+        """
+
+        #Those property will be disabled and only keep in add-on settings page for now
 
         #pre-heat duration property
         preHeatDuration = hq_minute_rw_property(self, 'Pre-Heat Duration')
@@ -66,16 +70,50 @@ class hqDevice(Device):
         postHeatDuration = hq_minute_rw_property(self, 'Post-Heat Duration')
         self.properties['PostHeatDuration'] = postHeatDuration
         #postHeatDuration.set_RO_Value(self, 'PostHeatDuration', config['postHeatDelay'])
-
-    def poll(self, datas):
+        """
+    def poll(self, datas: hq_config_data):
         """
         poll for changes
         must be called in a thread
+
+        datas - datas to compare
         """
+        #TODO: fetch data
+        #compare data
+        ##if fetched data is different,  update it with prop.set_RO_Value()
 
         while True:
                 time.sleep(_POLL_INTERVAL)
+                
+                #update data with hq api call
 
-                for prop in self.properties.values:
 
-                    prop.
+
+                #do check and update for every property
+
+                for prop in self.properties:
+
+                    if prop.name == 'NextEvent':
+                        #do every update for next event
+                        if prop.value == datas.nextEvent:
+                            continue
+                        else:
+                            prop.set_RO_Value(self, prop.name, datas.nextEvent)
+                    
+                    if prop.name == 'LastSync':
+                        if prop.value == datas.lastSync:
+                            continue
+                        else:
+                            prop.set_RO_Value(self, prop.name, datas.lastSync)
+
+                    if prop.name == 'ActiveEvent':
+                        #do every check and update for active event
+                        print("must do something here")
+
+                    if prop.name == 'PreHeatEvent':
+                        #do pre heat event check and update
+                        print("must do something here")
+
+                    if prop.name == 'PostHeatEvent':
+                        #do post heat event check and update
+                        print("must do something here")
