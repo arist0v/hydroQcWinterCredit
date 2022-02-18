@@ -11,7 +11,14 @@ from hydroqc import webuser
 
 class hq_webuser(webuser.WebUser):
     """HQ web user connection"""
-    
+
+    def __init__(self, username, password, verify_ssl=False, log_level=None, http_log_level=None):
+        """
+        init the object
+        """
+        #used to add a default verify_ssl=False
+        super().__init__(username, password, verify_ssl, log_level, http_log_level)
+
     async def async_func(self):
         """async func"""
         await self.login()#login to hq
@@ -47,6 +54,6 @@ if __name__ == "__main__":
     """
     part to be able to test outside of webthings gateway
     """
-    hqWebUser = hq_webuser('USERNAME', 'PASSWORD')
+    hqWebUser = hq_webuser('verret.martin@gmail.com', 'b64214909B')
     events = hqWebUser.get_events()
     print(events)
