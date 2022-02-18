@@ -1,7 +1,5 @@
 """Property for device Hydro Quebec event for Webthings"""
 
-from os import name
-from xml.dom.minidom import NamedNodeMap
 from gateway_addon import Property
 from datetime import datetime
 
@@ -9,7 +7,7 @@ class hqProperty(Property):
     """Property type for HQdata"""
     description = None
     
-    def __init__(self, device):
+    def __init__(self, device, name):
         """
         Initialize the object
         
