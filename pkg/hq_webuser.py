@@ -37,11 +37,20 @@ class hq_webuser(webuser.WebUser):
         await self.close_session()
 
     def get_events(self):
+        """
+        get all peak events
+        
+        return events as list of dict {'start' : X, 'end' : Y }
+        """
+        events = []
         loop= asyncio.get_event_loop()
         loop.run_until_complete(self.async_func())
         loop.run_until_complete(self.close_fut())
+        for event in self.wc_events:
+            events.append({'start': event.to_dict()['start'], 'end': event.to_dict()['end']})
 
-        return self.wc_events
+
+        return events
 
 if __name__ == "__main__":
     """
@@ -49,5 +58,4 @@ if __name__ == "__main__":
     """
     hqWebUser = hq_webuser('USERNAME', 'PASSWORD')
     events = hqWebUser.get_events()
-    for event in events:
-        print(event.to_dict())
+    print(events)
