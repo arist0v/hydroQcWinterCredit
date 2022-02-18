@@ -1,8 +1,14 @@
 """Web user class for HQ website connection to pull """
 
 import asyncio
+import sys
+import os
+
+root_folder = os.path.abspath(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(root_folder)
 
 from hydroqc import webuser
+#from hydroqc import webuser
 
 
 class hq_webuser(webuser.WebUser):
@@ -31,11 +37,20 @@ class hq_webuser(webuser.WebUser):
         await self.close_session()
 
     def get_events(self):
+        """
+        get all peak events
+        
+        return events as list of dict {'start' : X, 'end' : Y }
+        """
+        events = []
         loop= asyncio.get_event_loop()
         loop.run_until_complete(self.async_func())
         loop.run_until_complete(self.close_fut())
+        for event in self.wc_events:
+            events.append({'start': event.to_dict()['start'], 'end': event.to_dict()['end']})
 
-        return self.wc_events
+
+        return events
 
 if __name__ == "__main__":
     """
@@ -43,4 +58,4 @@ if __name__ == "__main__":
     """
     hqWebUser = hq_webuser('USERNAME', 'PASSWORD')
     events = hqWebUser.get_events()
-    print("TEST DATA: {0}".format(events))
+    print(events)
