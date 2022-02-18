@@ -38,7 +38,7 @@ class hq_webuser(webuser.WebUser):
         """
         get all peak events
         
-        return events as list of dict {'start' : X, 'end' : Y }
+        return events as list of dict ex: [{'start' : X, 'end' : Y },]
         """
         events = []
         loop= asyncio.get_event_loop()
@@ -54,6 +54,6 @@ if __name__ == "__main__":
     """
     part to be able to test outside of webthings gateway
     """
-    hqWebUser = hq_webuser('verret.martin@gmail.com', 'b64214909B')
+    hqWebUser = hq_webuser('USERNAME', 'PASSWORD')
     events = hqWebUser.get_events()
     print(events)
