@@ -8,8 +8,6 @@ root_folder = os.path.abspath(os.path.dirname(os.path.dirname(os.path.abspath(__
 sys.path.append(root_folder)
 
 from hydroqc import webuser
-#from hydroqc import webuser
-
 
 class hq_webuser(webuser.WebUser):
     """HQ web user connection"""
