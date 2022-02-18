@@ -38,11 +38,9 @@ class hq_webuser(webuser.WebUser):
         return self.wc_events
 
 if __name__ == "__main__":
-    hqWebUser = hq_webuser('verret.martin@gmail.com', 'b64214909B')
-    #loop = asyncio.get_event_loop()
-    #loop.run_until_complete(hqWebUser.async_func())
-    #close_fut = asyncio.wait([hqWebUser.close_session()])
-    #loop.run_until_complete(hqWebUser.close_fut())
-    #loop.close()
+    """
+    part to be able to test outside of webthings gateway
+    """
+    hqWebUser = hq_webuser('USERNAME', 'PASSWORD')
     events = hqWebUser.get_events()
     print("TEST DATA: {0}".format(events))
