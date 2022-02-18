@@ -11,14 +11,7 @@ from hydroqc import webuser
 
 class hq_webuser(webuser.WebUser):
     """HQ web user connection"""
-
-    def __init__(self, username, password, verify_ssl=False, log_level=None, http_log_level=None):
-        """
-        init the object
-        """
-        #TODO:remove if not used
-        super().__init__(username, password, verify_ssl, log_level, http_log_level)
-
+    
     async def async_func(self):
         """async func"""
         await self.login()#login to hq
